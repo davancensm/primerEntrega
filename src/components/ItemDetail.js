@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
-export default function ItemDetail({item}) {
+export default function ItemDetail(item) {
+    const [items,setItems] = useState(item);
     return(
     <>
-        <span>{item.nombre}</span>
-        <span>{item.precio}</span>
-        <span>{item.descripcion}</span>
-        <img scr={item.imagen}></img>
-    </>)
+        <span>{items.nombre}</span>
+        <span>{items.precio}</span>
+        <span>{items.descripcion}</span>
+        <img scr={items.imagen}></img>)
+</>)
 }

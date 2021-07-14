@@ -30,7 +30,6 @@ const getItemsPromise = () => {
 const getItems = () =>{
     getItemsPromise()
     .then(response => setMisItems(response))
-    .catch(error => console.log('Algo malio sal', error))
 }
 
 

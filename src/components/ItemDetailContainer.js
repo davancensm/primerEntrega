@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import ItemDetail from "./ItemDetail"
 
 export default function ItemDetailContainer() {
     
@@ -17,22 +17,28 @@ export default function ItemDetailContainer() {
             setTimeout(() =>  
             fetchPromise()
             .then(response => response.json())
-            .then(data => resolve(data))          
+            .then(result => console.log(result))
+            .then(resp => setItemDetailContainer(resp))   
+            .then(asd => console.log(itemDetailContainer))
+            .then(data => resolve(data))       
             ,2000);
         })
     }
     
     const getItems = () =>{
         getItemsPromise()
-        .then(res => console.log(res))
+        .then((data) => console.log(data))
         .then(response => setItemDetailContainer(response))
         }
-    console.log(itemDetailContainer)
-
-    return(<>
-        <ItemDetail item=""/>
-        </>
-        )
+    
+    
+        return(<>
+                {itemDetailContainer
+                ?
+                    <ItemDetail item={itemDetailContainer[0]}/>
+                : <span>Cargando productos...</span>}
+            </>)
 }
+
     
         
