@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import ItemDetailContainer from "./ItemDetailContainer"
 
 export default function Item(){
 
@@ -34,6 +35,7 @@ const getItems = () =>{
 
 
 return(
+    <>
     <ul>
         {misItems
         ? misItems.map(imprimirProductos => {
@@ -42,4 +44,8 @@ return(
             )
             })
         : <span>Cargando productos...</span>}
-    </ul>)}
+        
+    </ul>
+    <ItemDetailContainer/>
+    </>
+    )}

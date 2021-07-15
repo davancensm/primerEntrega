@@ -4,7 +4,7 @@ import ItemList from "./ItemList";
 export default class ItemListContainer extends React.Component {
     
         state = {
-            greeting : "Greeting Entregable clase 2"
+            greeting : "Lista de productos"
         }
         render(){
             return(

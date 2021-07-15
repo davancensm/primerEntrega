@@ -6,7 +6,6 @@ function Products() {
   return (
     <div>
         <ItemListContainer/>
-        <ItemDetailContainer/>
     </div>
   );
 }
