@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ItemCount from "./ItemCount"
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Button } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,11 +13,7 @@ const useStyles = makeStyles({
       maxWidth: 250,
       margin: '15px',
     },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
+
     title: {
       fontSize: 14,
     },
@@ -27,8 +23,12 @@ const useStyles = makeStyles({
   });
 
 export default function Item({item}){
-
+    const [visible, setVisible] = useState(true)
     const classes = useStyles();
+    
+    const onAdd = () => {
+      setVisible(!visible);
+    }
 
     return(
     <Card className={classes.root}>
@@ -43,7 +43,12 @@ export default function Item({item}){
         </Typography>
       </CardContent>
       <CardActions>
-      <ItemCount stock={item.stock} initial={1} onAdd={() => console.log('agregado')}/>
+      {visible
+      ?
+          <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/>
+      :
+      <Link to={`./cart`} variant="h2"><Button>Finalizar Compra</Button></Link>
+      }    
       </CardActions>
     </Card>
   );
