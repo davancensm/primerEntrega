@@ -22,7 +22,6 @@ function ItemCount({stock: initialStock, onAdd, initial}){
         }
     }   
     
-
     return(
     <Card>
         <IconButton aria-label="Add" size="small">

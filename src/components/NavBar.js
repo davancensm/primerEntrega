@@ -26,11 +26,11 @@ function NavBar(){
                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                     <MenuIcon/> 
                 </IconButton>
-                <Button><Link to="./" style={{ textDecoration: 'none' }}>Home</Link></Button>
-                <Button><Link to="./Products" style={{ textDecoration: 'none' }}>Productos</Link></Button>
-                <Button><Link to="./Checkout" style={{ textDecoration: 'none' }}>Checkout</Link></Button>
+                <Button><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></Button>
+                <Button><Link to="./products" style={{ textDecoration: 'none' }}>Productos</Link></Button>
+                <Button><Link to="./checkout" style={{ textDecoration: 'none' }}>Checkout</Link></Button>
                 <Typography variant='h6' className={classes.title}>
-                    E-Commerce
+                    <Link to="/">E-Commerce</Link>
                 </Typography>
                 <Button><Link to="./Cart" style={{ textDecoration: 'none' }}><CartWidget/></Link></Button>
             </Toolbar>

@@ -1,51 +1,50 @@
-import React, {useEffect, useState} from 'react';
-import ItemDetailContainer from "./ItemDetailContainer"
+import React from 'react';
+import ItemCount from "./ItemCount"
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import {Link} from "react-router-dom";
 
-export default function Item(){
+const useStyles = makeStyles({
+    root: {
+      minWidth: 200,
+      maxWidth: 250,
+      margin: '15px',
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
 
-    const products = [
-        {nombre: 'Producto 1',
-        precio: '$50',
-        descripcion: 'CocaCola',
-        img: 'https://coca-colafemsa.com/wp-content/uploads/2019/11/2.png' },
-        {nombre: 'Producto 2',
-        precio: '$100',
-        descripcion: 'Pepsi',
-        img: 'http://d3ugyf2ht6aenh.cloudfront.net/stores/001/232/784/products/pepsi-cola-latas-354-ml-x-24-unidades1-d25ca25cd3cb2f7edb16006551484168-640-0.png'}
-    ]
+export default function Item({item}){
 
-const [misItems, setMisItems] = useState(null);
+    const classes = useStyles();
 
-useEffect(() => {
-    getItems()
-    }, [])
-
-const getItemsPromise = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => products && products.length > 0
-        ? resolve(products)
-        : reject(new Error('getProducts Error')),2000);
-    })
+    return(
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography className={classes.pos} color="textSecondary">
+            <Link to={`./item/${item.descripcion}`} style={{ textDecoration: 'none' }}>{item.descripcion}</Link>
+        </Typography>
+        <Typography variant="body2" component="p">
+          {item.nombre}
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+      <ItemCount stock={item.stock} initial={1} onAdd={() => console.log('agregado')}/>
+      </CardActions>
+    </Card>
+  );
 }
-
-const getItems = () =>{
-    getItemsPromise()
-    .then(response => setMisItems(response))
-}
-
-
-return(
-    <>
-    <ul>
-        {misItems
-        ? misItems.map(imprimirProductos => {
-            return(
-            <li>{imprimirProductos.nombre} - {imprimirProductos.precio}</li>
-            )
-            })
-        : <span>Cargando productos...</span>}
-        
-    </ul>
-    <ItemDetailContainer/>
-    </>
-    )}
