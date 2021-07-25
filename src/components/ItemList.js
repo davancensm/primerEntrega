@@ -8,7 +8,7 @@ useEffect(() => {
     getItems();
     }, [])
 
-    const fetchURL = () => fetch('https://mocki.io/v1/27a345e6-adb9-4962-87df-dc2b5ab8f531');
+    const fetchURL = () => fetch('https://mocki.io/v1/6632fa0e-f6d4-45ab-a5bd-35d681979dfa');
 
     const getItems = () =>{
         fetchURL().then(res => res.json())   

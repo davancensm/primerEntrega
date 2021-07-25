@@ -6,12 +6,13 @@ import Category from './pages/Category';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Checkout from './pages/Checkout';
-import ProductDetail from './pages/ProductDetail'
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { CartProvider } from './components/CartContext';
 
 function App() {
   return (
+    <CartProvider>
     <Router>
       <NavBar/>
       <Switch>
@@ -32,7 +33,7 @@ function App() {
         <Route exact path="/item/:id"><ItemDetailContainer/></Route>
       </Switch>
     </Router>
-    
+    </CartProvider>
   );
 }
 

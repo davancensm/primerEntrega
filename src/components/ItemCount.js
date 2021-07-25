@@ -31,7 +31,7 @@ function ItemCount({stock: initialStock, onAdd, initial}){
         <IconButton aria-label="Delete" size="small">
             <ArrowDownwardIcon onClick={subsCount}>-</ArrowDownwardIcon>
         </IconButton>
-        <IconButton color="primary" onClick={() => {return onAdd()}} aria-label="Agregar al carrito.">
+        <IconButton color="primary" onClick={() => {return onAdd(count)}} aria-label="Agregar al carrito.">
             <AddShoppingCartIcon />
         </IconButton>
     </Card>)
