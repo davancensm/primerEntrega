@@ -1,29 +1,47 @@
 import React, {useState , useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import Item from './Item';
+import { getFirestore } from '../firebase';
 
 export default function ItemDetailContainer() {
 
     const { id } = useParams();
-    const [items, setItems] = useState(null);
+    const [items, setItems] = useState();
+    const [loading, setLoading ] =useState(false);
 
+ 
     useEffect(() => {
-        getItems();
-    }, [])
+        setLoading(true);
+        const db = getFirestore();
+        const itemCollection = db.collection("items");
+        console.log(id)
+        const item = itemCollection.where('nombre', '==', id)
+        console.log(item)
+        item.get().then((querySnapshot) => {
+            console.log(querySnapshot)
+        if(querySnapshot.size === 0){
+            console.log('No results')
+        }else {
+                setItems(querySnapshot.docs.map(doc => doc.data()))
+            }
+        }).finally(() => {setLoading(false);})
+    }, []);
 
-    const fetchURL = () => fetch('https://mocki.io/v1/27a345e6-adb9-4962-87df-dc2b5ab8f531');
-
-    const getItems = () => {
-        fetchURL().then(res => res.json())   
-        .then(result => setItems(result.find(item => item.descripcion === id)))
-        .then(data => console.log(data))
-        } 
+        // itemCollection.get().then((querySnapshot) => {
+        //     if(querySnapshot.size === 0){
+        //         console.log('No results')
+        //     }else {
+        //         setItems(querySnapshot.docs.where(doc => doc.data()))
+        //     }
+        // }).finally(() => {setLoading(false);})
+        // }, [])
         
     return( 
         <div style={{ display: 'flex' }}>        
+        {console.log(items)}
         {items
         ?
-            <Item item={items}/>
+            <Item item={items[0]}/>
             
         : <span>Cargando el producto...</span>
         }
@@ -31,5 +49,4 @@ export default function ItemDetailContainer() {
         )
 }
 
-    
         

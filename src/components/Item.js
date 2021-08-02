@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 import { CartContext } from '../components/CartContext';
+import CardMedia from '@material-ui/core/CardMedia'
 
 const useStyles = makeStyles({
     root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function Item({item}){
 
-    const [cart , setCart, agregarItem] = useContext(CartContext);
+    const [cart, setCart, agregarItem, clear, removeItem, removeOneItem, addOneItem] = useContext(CartContext);
     const [visible, setVisible] = useState(true);
     const classes = useStyles();
     
@@ -41,11 +42,22 @@ export default function Item({item}){
     <Card className={classes.root} key={item.id}>
       <CardContent>
         <Typography className={classes.pos} color="textSecondary">
-            <Link to={`./item/${item.descripcion}`} style={{ textDecoration: 'none' }}>{item.nombre}</Link>
+            <Link to={`../item/${item.nombre}`} style={{ textDecoration: 'none' }}>{item.nombre}</Link>
         </Typography>
+        <CardMedia
+          component="img"
+          alt={item.nombre}
+          height="140"
+          src= {item.imagen}
+          title="Contemplative Reptile"
+        />
         <Typography variant="body2" component="p">
           <br />
           {item.descripcion}
+        </Typography>
+        <Typography variant="h6" component="p">
+          <br />
+          Precio: ${item.precio}
         </Typography>
       </CardContent>
       <CardActions>

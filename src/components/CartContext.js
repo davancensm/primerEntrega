@@ -24,10 +24,9 @@ export const CartProvider = (props) => {
     }
 
     const removeItem = (item) => {
-        const itemAEliminar = cart.indexOf((x) => x.id === item.id);
         setCart(cart.filter((x) => x.id !== item.id));
     }
-
+    
     const removeOneItem = (item) => {
         const existeEnCarrito = cart.find((x) => x.id === item.id);
         if (existeEnCarrito){

@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import { CartContext } from '../components/CartContext';
-import { makeStyles, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import {Link} from "react-router-dom";
 
 function Cart() {
-  const [cart , setCart, agregarItem, clear, removeItem, removeOneItem, addOneItem] = useContext(CartContext);
+  const [cart, setCart, agregarItem, clear, removeItem, removeOneItem, addOneItem] = useContext(CartContext);
   const totalPrice = cart.reduce(( acumulado, agregar ) => acumulado + agregar.cantidad * agregar.precio , 0)
 
   return (
