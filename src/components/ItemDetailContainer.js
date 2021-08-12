@@ -26,24 +26,16 @@ export default function ItemDetailContainer() {
             }
         }).finally(() => {setLoading(false);})
     }, []);
-
-        // itemCollection.get().then((querySnapshot) => {
-        //     if(querySnapshot.size === 0){
-        //         console.log('No results')
-        //     }else {
-        //         setItems(querySnapshot.docs.where(doc => doc.data()))
-        //     }
-        // }).finally(() => {setLoading(false);})
-        // }, [])
         
     return( 
+
         <div style={{ display: 'flex' }}>        
-        {console.log(items)}
+        
         {items
         ?
             <Item item={items[0]}/>
             
-        : <span>Cargando el producto...</span>
+        : <span>El producto no existe.</span>
         }
         </div>
         )

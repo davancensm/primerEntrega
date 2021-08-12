@@ -34,7 +34,7 @@ export default function Item({item}){
     
     const onAdd = (count) => {
       setVisible(!visible);
-      const added = {id: item.id, cantidad: count, precio: item.precio };
+      const added = {id: item.id, nombre : item.nombre, cantidad: count, precio: item.precio };
       agregarItem(added);
     }
 
@@ -65,7 +65,7 @@ export default function Item({item}){
       ?
           <ItemCount stock={item.stock} initial={0} onAdd={onAdd}/>
       :
-      <Link to={`./cart`} variant="h2"><Button>Finalizar Compra</Button></Link>
+      <Link to={`../cart`} variant="h2"><Button>Finalizar Compra</Button></Link>
       }    
       </CardActions>
     </Card>

@@ -7,24 +7,26 @@ export default function ItemList({filter}){
     const [loading, setLoading] = useState(false);
 
 
-useEffect(() => {
-    setLoading(true);
-    const db = getFirestore();
-    let itemCollection = db.collection("items");
-    if(filter != undefined){
-        itemCollection = itemCollection.where('categoria','==',filter)
-    }
 
-    itemCollection.get().then((querySnapshot) => {
+    const db = getFirestore();
+
+    
+    let itemCollection = db.collection("items");
+    let newItemCollection;
+    if (filter != undefined){
+        newItemCollection = itemCollection.where('categoria','==', filter);
+    }else{
+        newItemCollection = itemCollection;
+    }
+    console.log(filter);
+
+    newItemCollection.get().then((querySnapshot) => {
         if(querySnapshot.size === 0){
             console.log('No results')
         }else {
-            setMisItems(querySnapshot.docs.map(doc => doc.data()))
+            setMisItems(querySnapshot.docs.map(doc => doc.data()));
         }
-    }).finally(() => {setLoading(false);})
-    }, [])
-
-    
+    })
     
     return(
         <div style={{ display: 'flex' }}>        

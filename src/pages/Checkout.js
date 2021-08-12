@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemCount from "../components/ItemCount"
 
-
 function Checkout() {
   return (
     <div>

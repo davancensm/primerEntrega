@@ -27,12 +27,12 @@ function NavBar(){
                     <MenuIcon/> 
                 </IconButton>
                 <Button><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></Button>
-                <Button><Link to="../products" style={{ textDecoration: 'none' }}>Productos</Link></Button>
-                <Button><Link to="../checkout" style={{ textDecoration: 'none' }}>Checkout</Link></Button>
+                <Button><Link to="../category/3x3" style={{ textDecoration: 'none' }}>3x3</Link></Button>
+                <Button><Link to="../category/4x4" style={{ textDecoration: 'none' }}>4x4</Link></Button>
                 <Typography variant='h6' className={classes.title}>
                     <Link to="/">E-Commerce</Link>
                 </Typography>
-                <Button><Link to="./Cart" style={{ textDecoration: 'none' }}><CartWidget/></Link></Button>
+                <Button><Link to="../Cart" style={{ textDecoration: 'none' }}><CartWidget/></Link></Button>
             </Toolbar>
         </AppBar>
         </div>)
